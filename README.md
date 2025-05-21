@@ -8,7 +8,7 @@ This repository contains research cases and advanced examples for the ECAT (Eart
 
 > ### Case Dataset List
 >
-> | 🌏 Case Name                | 📝 Description                                 | � Local Directory                                   | 🔗 Zenodo DOI                                      |
+> | 🌏 Case Name                | 📝 Description                                 | 📁 Local Directory                                   | 🔗 Zenodo DOI                                      |
 > |----------------------------|-----------------------------------------------|-----------------------------------------------------|----------------------------------------------------|
 > | 🌋 Dingri Earthquakes 2015 | Data and results for 2015 Dingri earthquake   | [Details](./Cases/Dingri_Events/Dingri_20150425Mw5_7/)|                                                    |
 > | 🌋 Dingri Earthquakes 2020 | Data and results for 2020 Dingri earthquake   | [Details](./Cases/Dingri_Events/Dingri_20200320Mw5_6/)|                                                    |
