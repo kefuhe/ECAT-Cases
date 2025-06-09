@@ -17,14 +17,14 @@ This repository contains research cases and advanced examples for the ECAT (Eart
 
 > ### Method & Example Modules
 >
-> | ⚡ Example/Module           | 📝 Description                                 | 📁 Local Directory                                   |
-> |----------------------------|-----------------------------------------------|-----------------------------------------------------|
-> | ⚡ InSAR Downsampling       | Example code for InSAR downsampling           | [Details](./Cases/InSAR_Downsampling/)              |
-> | ⚡ Hotan Nonlinear Inversion| Nonlinear inversion example for Hotan         | [Details](./Cases/Hotan_20200625M6_3/)                    |
-> | ⚡ Iran Nonlinear Inversion | Nonlinear inversion example for Iran          | [Details](./Cases/Iran_20170405M6_1/)                     |
-> | ⚡ Taiwan Nonlinear Inversion| Nonlinear inversion example for Taiwan       | [Details](./Cases/Taiwan_20240405Mw7_4/)                   |
-> | ⚡ Wushi Nonlinear Inversion| Nonlinear inversion example for Wushi         | [Details](./Cases/Wushi_20240122M7_0/)                    |
-> | ⚡ Western Xizang Nonlinear Inversion| Nonlinear inversion example         | [Details](./Cases/Western_Xizang_20200722M6_3/)           |
+> | 🏷️ Category             | ⚡ Example/Module           | 📝 Description (Date, Magnitude, Type)           | 📁 Local Directory                                   |
+> |-------------------------|----------------------------|--------------------------------------------------|-----------------------------------------------------|
+> | Downsampling            | InSAR Downsampling         | Example code for InSAR downsampling              | [Details](./Cases/InSAR_Downsampling/)              |
+> | Nonlinear Inversion     | Hotan Nonlinear Inversion  | 2020-06-25, Mw6.3, Normal                   | [Details](./Cases/Hotan_20200625M6_3/)              |
+> |                         | Iran Nonlinear Inversion   | 2017-04-05, Mw6.1, Reverse                       | [Details](./Cases/Iran_20170405M6_1/)               |
+> |                         | Taiwan Nonlinear Inversion | 2024-04-05, Mw7.4, Reverse                       | [Details](./Cases/Taiwan_20240405Mw7_4/)            |
+> |                         | Wushi Nonlinear Inversion  | 2024-01-22, Mw7.0, Strike-slip                   | [Details](./Cases/Wushi_20240122M7_0/)              |
+> |                         | Western Xizang Nonlinear Inversion | 2020-07-22, Mw6.3, Reverse           | [Details](./Cases/Western_Xizang_20200722M6_3/)     |
 
 ## Usage
 
