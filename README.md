@@ -8,12 +8,12 @@ This repository contains research cases and advanced examples for the ECAT (Eart
 
 > ### Real Earthquake Cases
 >
-> | 🌏 Case Name                | 📝 Description                                 | 📁 Local Directory                                   | 🔗 Zenodo DOI                                      |
-> |----------------------------|-----------------------------------------------|-----------------------------------------------------|----------------------------------------------------|
-> | 🏔️ Dingri Earthquakes 2015  | Data and results for 2015 Dingri earthquake   | [Details](./Cases/Dingri_Events/Dingri_20150425Mw5_7/)| [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
-> | 🏔️ Dingri Earthquakes 2020  | Data and results for 2020 Dingri earthquake   | [Details](./Cases/Dingri_Events/Dingri_20200320Mw5_6/)| [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
-> | 🏔️ Dingri Earthquakes 2025  | Data and results for 2025 Dingri earthquake   | [Details](./Cases/Dingri_Events/Dingri_20250107Mw7_0/)| [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
-> | 🏔️ Sagaing Earthquake 2025 | Data and results for 2025 Sagaing earthquake  | [Details](./Cases/Sagaing_20250328Mw7_8/)| [Zenodo](https://doi.org/10.5281/zenodo.15460702)  |
+> | 🌏 Case Name                                                                 | 📝 Description (Date, Magnitude, Type)        | 📁 Local Directory                                   | 🔗 Zenodo DOI                                      |
+> |-----------------------------------------------------------------------------|-----------------------------------------------|-----------------------------------------------------|----------------------------------------------------|
+> | Dingri Earthquake 2015                                                      | 2015-04-25, Mw5.7, Normal                    | [Details](./Cases/Dingri_Events/Dingri_20150425Mw5_7/) | [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
+> | Dingri Earthquake 2020                                                      | 2020-03-20, Mw5.6, Normal                    | [Details](./Cases/Dingri_Events/Dingri_20200320Mw5_6/) | [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
+> | [Dingri Earthquake 2025](https://earthquake.usgs.gov/earthquakes/eventpage/us6000pi9w/executive) | 2025-01-07, Mw7.0, Normal                    | [Details](./Cases/Dingri_Events/Dingri_20250107Mw7_0/) | [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
+> | [Sagaing Earthquake 2025](https://earthquake.usgs.gov/earthquakes/eventpage/us7000pn9s/executive) | 2025-03-28, Mw7.8, Strike-slip               | [Details](./Cases/Sagaing_20250328Mw7_8/)              | [Zenodo](https://doi.org/10.5281/zenodo.15460702)  |
 
 > ### Method & Example Modules
 >
