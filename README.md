@@ -20,11 +20,11 @@ This repository contains research cases and advanced examples for the ECAT (Eart
 > | 🏷️ Category         | ⚡ Earthquake Example         | 📝 Description (Date, Magnitude, Type)           | 📁 Local Directory                                   |
 > |---------------------|------------------------------|--------------------------------------------------|-----------------------------------------------------|
 > | Downsampling        | InSAR Downsampling           | Example code for InSAR downsampling              | [Details](./Cases/InSAR_Downsampling/)              |
-> | Nonlinear Inversion | [Hotan Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000abmk/executive)           | 2020-06-25, *M<sub>W</sub>*6.3, Normal                         | [Details](./Cases/Hotan_20200625M6_3/)              |
-> |                     | [Iran Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us10008ei0/executive)            | 2017-04-05, *M<sub>W</sub>*6.1, Reverse                        | [Details](./Cases/Iran_20170405M6_1/)               |
-> |                     | [Taiwan Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000m9g4/executive)          | 2024-04-05, M<sub>W</sub>7.4, Reverse                        | [Details](./Cases/Taiwan_20240405Mw7_4/)            |
-> |                     | [Wushi Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000lsze/executive)           | 2024-01-22, M<sub>W</sub>7.0, Strike-slip                    | [Details](./Cases/Wushi_20240122M7_0/)              |
-> |                     | [Western Xizang Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us6000b26j/executive)  | 2020-07-22, M<sub>W</sub>6.3, Normal                         | [Details](./Cases/Western_Xizang_20200722M6_3/)     |
+> | Nonlinear Inversion | [Hotan Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000abmk/executive)           | 2020-06-25, Mw6.3, Normal                         | [Details](./Cases/Hotan_20200625M6_3/)              |
+> |                     | [Iran Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us10008ei0/executive)            | 2017-04-05, Mw6.1, Reverse                        | [Details](./Cases/Iran_20170405M6_1/)               |
+> |                     | [Taiwan Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000m9g4/executive)          | 2024-04-05, Mw7.4, Reverse                        | [Details](./Cases/Taiwan_20240405Mw7_4/)            |
+> |                     | [Wushi Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000lsze/executive)           | 2024-01-22, Mw7.0, Strike-slip                    | [Details](./Cases/Wushi_20240122M7_0/)              |
+> |                     | [Western Xizang Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us6000b26j/executive)  | 2020-07-22, Mw6.3, Normal                         | [Details](./Cases/Western_Xizang_20200722M6_3/)     |
 
 ## Usage
 
