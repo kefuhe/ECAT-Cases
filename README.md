@@ -5,16 +5,6 @@
 
 This repository contains research cases and advanced examples for the ECAT (Earthquake Cycle Analysis Toolkit).
 
-
-> ### Real Earthquake Cases
->
-> | 🌏 Case Name                                                                 | 📝 Description (Date, Magnitude, Type)        | 📁 Local Directory                                   | 🔗 Zenodo DOI                                      |
-> |-----------------------------------------------------------------------------|-----------------------------------------------|-----------------------------------------------------|----------------------------------------------------|
-> | Dingri Earthquake 2015                                                      | 2015-04-25, Mw5.7, Normal                    | [Details](./Cases/Dingri_Events/Dingri_20150425Mw5_7/) | [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
-> | Dingri Earthquake 2020                                                      | 2020-03-20, Mw5.6, Normal                    | [Details](./Cases/Dingri_Events/Dingri_20200320Mw5_6/) | [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
-> | [Dingri Earthquake 2025](https://earthquake.usgs.gov/earthquakes/eventpage/us6000pi9w/executive) | 2025-01-07, Mw7.0, Normal                    | [Details](./Cases/Dingri_Events/Dingri_20250107Mw7_0/) | [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
-> | [Sagaing Earthquake 2025](https://earthquake.usgs.gov/earthquakes/eventpage/us7000pn9s/executive) | 2025-03-28, Mw7.8, Strike-slip               | [Details](./Cases/Sagaing_20250328Mw7_8/)              | [Zenodo](https://doi.org/10.5281/zenodo.15460702)  |
-
 > ### Method & Example Modules
 >
 > | 🏷️ Category         | ⚡ Earthquake Example         | 📝 Description (Date, Magnitude, Type)           | 📁 Local Directory                                   |
@@ -25,6 +15,15 @@ This repository contains research cases and advanced examples for the ECAT (Eart
 > |                     | [Taiwan Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000m9g4/executive)          | 2024-04-05, Mw7.4, Reverse                        | [Details](./Cases/Taiwan_20240405Mw7_4/)            |
 > |                     | [Wushi Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000lsze/executive)           | 2024-01-22, Mw7.0, Strike-slip                    | [Details](./Cases/Wushi_20240122M7_0/)              |
 > |                     | [Western Xizang Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us6000b26j/executive)  | 2020-07-22, Mw6.3, Normal                         | [Details](./Cases/Western_Xizang_20200722M6_3/)     |
+
+> ### Real Earthquake Cases
+>
+> | 🌏 Case Name                                                                 | 📝 Description (Date, Magnitude, Type)        | 📁 Local Directory                                   | 🔗 Zenodo DOI                                      |
+> |-----------------------------------------------------------------------------|-----------------------------------------------|-----------------------------------------------------|----------------------------------------------------|
+> | Dingri Earthquake 2015                                                      | 2015-04-25, Mw5.7, Normal                    | [Details](./Cases/Dingri_Events/Dingri_20150425Mw5_7/) | [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
+> | Dingri Earthquake 2020                                                      | 2020-03-20, Mw5.6, Normal                    | [Details](./Cases/Dingri_Events/Dingri_20200320Mw5_6/) | [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
+> | [Dingri Earthquake 2025](https://earthquake.usgs.gov/earthquakes/eventpage/us6000pi9w/executive) | 2025-01-07, Mw7.0, Normal                    | [Details](./Cases/Dingri_Events/Dingri_20250107Mw7_0/) | [Zenodo](https://doi.org/10.5281/zenodo.13730101)  |
+> | [Sagaing Earthquake 2025](https://earthquake.usgs.gov/earthquakes/eventpage/us7000pn9s/executive) | 2025-03-28, Mw7.8, Strike-slip               | [Details](./Cases/Sagaing_20250328Mw7_8/)              | [Zenodo](https://doi.org/10.5281/zenodo.15460702)  |
 
 ## Usage
 
