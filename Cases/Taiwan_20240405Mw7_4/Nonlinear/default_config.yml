@@ -45,7 +45,7 @@ geodata:
     bounds:
       defaults: [Uniform, -3.0, 6.0]
       sigma_0: [Uniform, -3.0, 6.0]
-    values: [0.0, 0.0, 0.0, 0.0] # null
+    values: 0.0 # null
     log_scaled: true
 data_sources: # Data sources for GPS and InSAR data
   gps:

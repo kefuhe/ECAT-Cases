@@ -1,0 +1,42 @@
+# Global setting
+lb: -3
+ub:  3
+# Set parameter boundaries based on parameter types
+geometry:
+    Dingri_Main: [-10, 10]
+    Dingri_2020: [-10, 10]
+    Turkey_Event1_Branch2: [-10, 10]
+    Turkey_Event2_Main: [-10, 10]
+    Turkey_Event2_Branch: [-10, 10]
+slip_magnitude:
+    Dingri_Main: [0, 15]
+    Dingri_2020: [0, 5]
+    Turkey_Event1_Branch2: [0, 15]
+    Turkey_Event2_Main: [0, 15]
+    Turkey_Event2_Branch: [0, 15]
+rake_angle:
+    Dingri_Main: [-120, -60] # [-30, 30]
+    Dingri_2020: [-150, -30] # [-50, 50]
+    Turkey_Event1_Branch2: [-80, 80]
+    Turkey_Event2_Main: [-45, 45] # [-30, 30]
+    Turkey_Event2_Branch: [-90, 0] # [-80, 80]
+strikeslip:
+    Dingri_Main: [-10, 10]
+    Dingri_2020: [-3, 3]
+    Turkey_Event1_Branch2: [0, 15]
+    Turkey_Event2_Main: [0, 15]
+    Turkey_Event2_Branch: [0, 15]
+dipslip:
+    Dingri_Main: [-10, 0]
+    Dingri_2020: [-5, 0]
+    Turkey_Event1_Branch2: [-5, 5]
+    Turkey_Event2_Main: [-5, 5]
+    Turkey_Event2_Branch: [-5, 0]
+poly: 
+    Dingri_Main: [-1000, 1000]
+    Dingri_2020: [-1000, 1000]
+    Turkey_Event1_Branch2: [-1000, 1000]
+    Turkey_Event2_Main: [-1000, 1000]
+    Turkey_Event2_Branch: [-1000, 1000]
+sigmas: [-3, 3]
+alpha: [-3, 3]

@@ -32,6 +32,7 @@ geodata:
       defaults: [Uniform, -200.0, 400.0]
   faults: null # set the fault names for each geodata
   sigmas: # Set the std of the geodata
+    mode: individual
     update: true
     bounds:
       defaults: [Uniform, -3.0, 6.0]

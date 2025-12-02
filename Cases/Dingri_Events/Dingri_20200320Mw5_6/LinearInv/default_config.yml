@@ -1,0 +1,72 @@
+# Custom green's functions
+GLs: null
+# Shear modulus
+shear_modulus: 3.0e10 # Pa
+use_bounds_constraints: true # Whether to use bounds constraints, only used in SMC_F_J mode
+use_rake_angle_constraints: true # Whether to use rake angle related inequality constraints, only used in SMC_F_J mode
+clipping_options:
+  enabled: false
+  methods:
+    - method: 'distance_to_fault'
+      distance_to_fault: 1.5 # For 'distance_to_fault' method, in kilometers
+    - method: 'lon_lat_range'
+      lon_lat_range: [86.0, 87.7, 32.5, 33.75] # For 'lon_lat_range' method, in degrees
+# Set geodata
+geodata:
+  data: null
+  verticals: true # [true, true, true, true, true, true, true, true] 
+  polys: 3 # [3, 3, 3, 3, 3, 1, 1, 1, 1, 1] 
+  faults: null # [null, null, null, null]
+  # Set the std of the geodata
+  sigmas:
+    update: true # [1.536553, 0.5470342, 0.6612552, 0.6264133, 0.7933989, 1.547918, 0.3563457, 0.3126266, 0.04189173, 0.02978782]
+    initial_value: [0.3181, 0.6062] # [0.9, -0.06878215, 1.294584, 1.285264, 1.044289, 0.9057466, 0.4057466, 0.4628013, 0.7643476, 0.6876611] # [1.40692007, 0.61066234, -0.12613797, 0.44343537, 1.10279779, 0.98934285, 1.10279779, 0.98934285]
+    log_scaled: true
+# Set the smoothing parameters # -0.3879523, 0.4509545, 0.66994763, -0.36097611, 0.03416567
+alpha:
+  update: true #  false
+  initial_value: [-2.0] # -3
+  log_scaled: true # true
+  faults: null # [null, null, null, null]
+# Set the fault parameters
+faults:
+  defaults:
+    method_parameters:
+      update_mesh:
+        method: 'generate_mesh'
+        segments_dict: 
+          top_segments: 20
+          bottom_segments: 20
+          left_segments: 6
+          right_segments: 6
+          left_right_progression: 1.17
+        verbose: 0 # gmsh verbosity level
+        show: false # show gmsh GUI
+      update_GFs:
+        geodata: null
+        verticals: null
+      update_Laplacian:
+        method: 'Mudpy'
+        bounds: ['free', 'locked', 'free', 'free'] # Top Bottom Left Right
+        topscale: 0.25
+        bottomscale: 0.03
+  Dingri_Main:
+    method_parameters:
+      update_fault_geometry:
+        method: perturb_BottomFixedDir_DeformMesh
+        angle_unit: 'degrees'
+        perturbation_direction: 'horizontal'
+        disct_z: 10
+        num_segments: 30
+        # bias: 1.1
+        # min_dz: 2.0
+  Turkey_Event2_Main:
+    method_parameters:
+      update_fault_geometry:
+        method: perturb_BottomFixedDir_DeformMesh
+        angle_unit: 'degrees'
+        perturbation_direction: 'horizontal'
+        disct_z: 10
+        num_segments: 7
+        # bias: 1.1
+        # min_dz: 2.0

@@ -1,0 +1,84 @@
+class: BoundLSEInversionConfig
+config_file: default_config.yml
+inversion_type: BLSE
+faultnames: [Dingri_2020]
+use_bounds_constraints: true
+use_rake_angle_constraints: true
+rake_angle: null
+use_euler_constraints: false
+shear_modulus: 30.0 GPa
+moment_magnitude_threshold: null
+magnitude_tolerance: null
+geodata:
+  data: [T012A, T121D]
+  verticals: [true, true]
+  polys: [3, 3]
+  faults: {}
+  sigmas:
+    update: [true, true]
+    initial_value: [0.3181, 0.6062]
+    log_scaled: true
+    mode: individual
+    dataset_param_indices: [0, 1]
+    updatable_param_indices: [0, 1]
+    num_datasets: 2
+    total_params: 2
+    updatable_params: 2
+    groups: null
+alpha:
+  enabled: true
+  update: [true]
+  initial_value: [-2.0]
+  log_scaled: true
+  faults: [[Dingri_2020]]
+  faults_index: [0]
+  mode: single
+  fault_param_indices: [0]
+  updatable_param_indices: [0]
+  num_faults: 1
+  total_params: 1
+  updatable_params: 1
+euler_constraints:
+  enabled: false
+  defaults: {}
+  faults: {}
+  configured_faults: []
+faults:
+  defaults:
+    method_parameters:
+      update_mesh:
+        method: generate_mesh
+        segments_dict: {top_segments: 20, bottom_segments: 20, left_segments: 6, right_segments: 6,
+          left_right_progression: 1.17}
+        verbose: 0
+        show: false
+      update_GFs:
+        geodata: [T012A, T121D]
+        verticals: [true, true]
+        dataFaults: [[Dingri_2020], [Dingri_2020]]
+        method: cutde
+        options: {}
+      update_Laplacian:
+        method: Mudpy
+        bounds: [free, locked, free, free]
+        topscale: 0.25
+        bottomscale: 0.03
+  Dingri_2020:
+    method_parameters:
+      update_mesh:
+        method: generate_mesh
+        segments_dict: {top_segments: 20, bottom_segments: 20, left_segments: 6, right_segments: 6,
+          left_right_progression: 1.17}
+        verbose: 0
+        show: false
+      update_GFs:
+        geodata: [T012A, T121D]
+        verticals: [true, true]
+        dataFaults: [[Dingri_2020], [Dingri_2020]]
+        method: cutde
+        options: {}
+      update_Laplacian:
+        method: Mudpy
+        bounds: [free, locked, free, free]
+        topscale: 0.25
+        bottomscale: 0.03

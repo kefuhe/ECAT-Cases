@@ -8,11 +8,54 @@ from mpi4py import MPI
 import matplotlib.pyplot as plt
 
 import os
+import argparse
 # using the C++ backend
 # os.environ['CUTDE_USE_BACKEND'] = 'cpp'
 
+"""
+This script demonstrates how to perform a Bayesian inversion for a multifault model using the CSI package.
+The script reads GPS and InSAR data, sets up the Bayesian inversion, and runs the inversion.
+The results are then plotted using the explorefault class.
+Steps:
+1. Read GPS and InSAR data. [Where you need to modify]
+2. run ecat-generate-nonlinear to generate the default configuration file. [Where you need to modify]
+3. run ecat-generate-boundary to generate the default boundary configuration file. [Where you need to modify]
+4. Set up the explorefault object with the data and configuration file.
+5. Run the Bayesian inversion using the walk method.
+6. Extract and plot the results using the extract_and_plot_bayesian_results method. [Where you need to modify]
+
+usage: test_nonlinear_bayesian.py [-h] [-r] [--no-plot]
+
+Perform Bayesian inversion or plot results. Use mpiexec for parallel execution when running the inversion.
+
+optional arguments:
+  -h, --help     Show this help message and exit.
+  -r, --run      Run Bayesian inversion (requires mpiexec for parallel execution).
+  --no-plot      Disable plotting results after running the script.
+
+Run Bayesian inversion or plot results.
+1. Run Bayesian inversion. You can change 4 to the number of processes you want to use.
+        mpiexec -n 4 python test_nonlinear_bayesian.py -r
+2. Only plot results after running the script.
+    python test_nonlinear_bayesian.py
+"""
+
 
 if __name__ == '__main__':
+    # -----------------------------------Parse Arguments--------------------------------------#
+    parser = argparse.ArgumentParser(
+        description="Perform Bayesian inversion or plot results. Use mpiexec for parallel execution when running the inversion."
+    )
+    parser.add_argument(
+        '-r', '--run', action='store_true',
+        help="Run Bayesian inversion (requires mpiexec for parallel execution)."
+    )
+    parser.add_argument(
+        '--no-plot', action='store_true',
+        help="Disable plotting results after running the script."
+    )
+    args = parser.parse_args()
+
     # -----------------------------------MPI Init---------------------------------------------#
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
@@ -57,9 +100,35 @@ if __name__ == '__main__':
     chain_length = expfault.chain_length
     expfault.setPriors(bounds=None, initialSample=None, datas=None) # datas for Sar reference
     expfault.setLikelihood(datas=None, verticals=None) 
-    # expfault.walk(nchains=nchains, chain_length=chain_length, comm=comm, filename='samples_mag_rake_multifaults.h5', 
-    #               save_every=2, save_at_interval=False, covariance_epsilon = 1e-9, amh_a=1.0/9.0, amh_b=8.0/9.0)
+    # -----------------------------------Run Bayesian Inversion--------------------------------#
+    if args.run:
+        # Run Bayesian inversion
+        expfault.walk(
+            nchains=nchains, chain_length=chain_length, comm=comm,
+            filename='samples_mag_rake_multifaults.h5', save_every=2,
+            save_at_interval=False, covariance_epsilon=1e-9, amh_a=1.0/9.0, amh_b=8.0/9.0
+        )
 
-    # ---------------------------------Plot Results---------------------------------------------#
-    expfault.extract_and_plot_bayesian_results(rank=rank, filename='samples_mag_rake_multifaults.h5',
-                                               plot_faults=True, plot_sigmas=True, plot_data=True)
+    # -----------------------------------Plot Results------------------------------------------#
+    if not args.no_plot:
+        expfault.extract_and_plot_bayesian_results(
+            rank=rank, filename='samples_mag_rake_multifaults.h5',
+            fault_figsize=None, sigmas_figsize=None, plot_faults=True,
+            plot_sigmas=True, plot_data=True, save_data=True, sar_corner='quad'
+        )
+
+        # Customized plotting
+        # if rank == 0:
+        #     # Plot the KDE matrix
+        #     axis_labels = [r'$log(\sigma_{T012A}^2)$', r'$log(\sigma_{T121D}^2)$']
+        #     expfault.plot_kde_matrix(
+        #         plot_sigmas=True, plot_faults=False, fill=True, save=True,
+        #         scatter=False, filename='kde_matrix_sigmas.png', axis_labels=axis_labels,
+        #         figsize=(5.0, 5.0), hspace=0.1, wspace=0.1
+        #     )
+        #     axis_labels = ['Lon', 'Lat', 'Depth', 'Dip', 'Width', 'Length', 'Strike', 'Slip', 'Rake']
+        #     expfault.plot_kde_matrix(
+        #         plot_sigmas=False, plot_faults=True, fill=True, save=True,
+        #         scatter=False, filename='kde_matrix_faults.png', axis_labels=axis_labels,
+        #         hspace=0.1, wspace=0.2, center_lon_lat=False, figsize=(7.5, 6.5), xtick_rotation=45
+        #     )
