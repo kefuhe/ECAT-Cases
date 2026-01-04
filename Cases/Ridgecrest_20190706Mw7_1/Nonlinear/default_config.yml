@@ -1,0 +1,55 @@
+nchains: 100 # Number of chains for BayesianMultiFaultsInversion
+chain_length: 50 # Length of each chain for BayesianMultiFaultsInversion
+nfaults: 2 # Number of faults
+fault_aliasnames: ['RCM', 'RCP'] # Alias names for the faults
+lon_lat_0: null # UTM coordinates of the origin
+# Set slip sampling mode to 'mag_rake' or 'ss_ds'
+slip_sampling_mode: 'mag_rake'
+clipping_options: # Clipping options
+  enabled: false # Whether to perform clipping
+  method: 'lon_lat_range' # Clipping method
+  lon_lat_range: [-119.0, -117.0, 34.0, 36.0] # [lon_min, lon_max, lat_min, lat_max]
+bounds:
+  defaults:
+    lon: [Uniform, -118.0, 2.0]
+    lat: [Uniform, 34.0, 2.0]
+    depth: [Uniform, 0.0, 30.0]
+    dip: [Uniform, 20, 69.9]
+    width: [Uniform, 1.0, 39.0]
+    length: [Uniform, 1.0, 199.0]
+    strike: [Uniform, 90.0, 270.0]
+    magnitude: [Uniform, 0.0, 15.0]
+    rake: [Uniform, 150, 60.0]
+  RCP:
+    rake: [Uniform, -30, 60.0]
+    strike: [Uniform, 0.0, 270.0]
+fixed_params:
+  # fault_0:
+    # lon: 102.205
+    # depth: 3.1578
+  RCP:
+    lon: -117.541
+    lat: 35.6431
+    depth: 0.0
+    strike: 227.0
+geodata:
+  verticals: true # Set the verticals for each geodata, boolean or list of booleans with length equal to the number of geodata
+  polys:
+    enabled: true
+    boundaries:
+      defaults: [Uniform, -200.0, 400.0]
+  faults: [null, null, [RCM], [RCP]] # set the fault names for each geodata
+  sigmas: # Set the unit weight standard deviations for each geodata
+    update: true
+    bounds:
+      defaults: [Uniform, -3.0, 6.0]
+      sigma_0: [Uniform, -3.0, 6.0]
+    values: 0.0 # null
+    log_scaled: true
+data_sources: # Data sources for GPS and InSAR data
+  gps:
+    directory: '../gps' # Directory containing GPS data files
+    file_pattern: 'cogps*' # File pattern to match GPS data files
+  insar:
+    directory: '../insar' # Directory containing InSAR data files
+    file_pattern: '*.rsp' # File pattern to match InSAR data files
