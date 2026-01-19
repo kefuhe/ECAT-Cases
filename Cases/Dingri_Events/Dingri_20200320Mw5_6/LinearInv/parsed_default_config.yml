@@ -1,6 +1,7 @@
 class: BoundLSEInversionConfig
 config_file: default_config.yml
 inversion_type: BLSE
+slip_sampling_mode: ss_ds
 faultnames: [Dingri_2020]
 use_bounds_constraints: true
 use_rake_angle_constraints: true

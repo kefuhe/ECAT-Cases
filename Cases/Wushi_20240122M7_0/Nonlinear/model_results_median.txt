@@ -1,7 +1,7 @@
 MCMC Model Parameters Summary (MEDIAN)
 ============================================================
 
-Fault: fault_0
+Fault: fault_0 (F0)
 ------------------------------
 Estimated parameters:
   lon         : 78.679379    ± 0.002648
@@ -11,7 +11,7 @@ Estimated parameters:
   width       : 12.638583    ± 1.277492
   length      : 32.662322    ± 0.623833
   strike      : 228.826543   ± 0.503279
-  magnitude   : 3.144957     ± 0.275413
+  slip        : 3.144957     ± 0.275413
   rake        : 38.193576    ± 1.889974
 
 Reference parameters:

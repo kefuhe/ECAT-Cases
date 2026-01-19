@@ -113,8 +113,7 @@ if __name__ == '__main__':
     # -----------------------------------Plot Results------------------------------------------#
     if not args.no_plot:
         expfault.extract_and_plot_bayesian_results(
-            rank=rank, filename='samples_mag_rake_multifaults.h5',
-            fault_figsize=None, sigmas_figsize=None, plot_faults=True,
+            rank=rank, filename='samples_mag_rake_multifaults.h5', plot_faults=True,
             plot_sigmas=True, plot_data=True, save_data=True, sar_corner='quad'
         )
 

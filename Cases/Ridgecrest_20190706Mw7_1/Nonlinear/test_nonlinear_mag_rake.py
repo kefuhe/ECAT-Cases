@@ -77,5 +77,5 @@ if __name__ == '__main__':
 
     # ---------------------------------Plot Results---------------------------------------------#
     expfault.extract_and_plot_bayesian_results(rank=rank, filename='samples_mag_rake_multifaults.h5',
-                                               plot_faults=True, plot_sigmas=False, plot_data=False)
+                                               plot_faults=True, plot_sigmas=False, plot_data=True)
 
