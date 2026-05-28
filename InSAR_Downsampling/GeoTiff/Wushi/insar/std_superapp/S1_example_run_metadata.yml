@@ -1,0 +1,255 @@
+generated_at_utc: '2026-05-28T08:02:27.316202+00:00'
+config_file: .\downsample_los.yml
+data_type: sar
+out_name: S1_example
+projection:
+  origin: auto
+  origin_resolved_from: input_data_center
+  lon0: 78.330000026655
+  lat0: 41.18124997139
+  utmzone: 44
+  epsg: 32644
+  note: Used for local x/y coordinates during downsampling.
+steps:
+  do_covar: false
+  do_downsample: true
+  show_raw_data: false
+compute:
+  downsample_cutde:
+    requested_backend: cpp
+    environment_backend: cpp
+    active_backend: null
+command_overrides:
+  vmin: null
+  vmax: null
+  workers: null
+expected_outputs:
+- S1_example_ifg.txt
+- S1_example_ifg.rsp
+- S1_example_ifg.cov
+- S1_example_downsample_report.yml
+- S1_example_decim.png
+- S1_example_processing_region_report.yml
+effective_config:
+  data_type: sar
+  general:
+    origin: auto
+    lon0: 78.330000026655
+    lat0: 41.18124997139
+    origin_resolved_from: input_data_center
+    utmzone: 44
+    epsg: 32644
+  sar_config:
+    reader: gamma_tiff
+    mode: unwrapped_phase
+    preset: null
+    convention: null
+    directory: ..
+    outName: S1_example
+    output_check: true
+    output_suffix: auto
+    files:
+      prefix: null
+      value: Wushi_asc_unw.tif
+      metadata: null
+      geometry:
+        azimuth: Wushi_asc_azi.tif
+        incidence: Wushi_asc_inc.tif
+      projection:
+        east: null
+        north: null
+        up: null
+    read:
+      downsample: 1
+      downsample_for_covar: 1
+      zero2nan: true
+      wavelength: null
+      factor_to_m: 1.0
+    grid:
+      engine: null
+      phase_band: 1
+      azi_band: 1
+      inc_band: 1
+      coord_is_lonlat: null
+      value_variable: null
+      projection_variable: null
+      east_variable: null
+      north_variable: null
+      up_variable: null
+      lon_name: null
+      lat_name: null
+    data_filters:
+      enabled: false
+      report: true
+      report_file: auto
+      rules:
+      - name: valid_observation_range
+        enabled: false
+        kind: value_range
+        value_space: observation
+        min: null
+        max: null
+    qc:
+      summary_percentile: 99.0
+      plot:
+        save_fig: true
+        file_path: sar_values.png
+        show: true
+        rawdownsample4plot: 1
+        coordrange: null
+        value_space: observation
+        factor4plot: 100.0
+        vmin: -30
+        vmax: 30
+        symmetry: true
+        cmap: cmc.roma_r
+        colorbar_orientation: vertical
+        colorbar_mode: auto
+        colorbar_loc: null
+        colorbar_size: null
+        colorbar_thickness: null
+        colorbar_pad: null
+        cb_label: null
+  processing_region:
+    enabled: true
+    report: true
+    report_file: auto
+    coord_type: lonlat
+    geometry: box
+    box:
+    - 77.5
+    - 79.5
+    - 40.5
+    - 41.75
+    polygon: null
+    polygon_file: null
+  covar:
+    do_covar: false
+    mask_out: null
+    missing_policy: existing_or_identity
+    function: exp
+    frac: 0.002
+    every: 2.0
+    distmax: 100.0
+    rampEst: true
+  downsample:
+    enabled: false
+    compute:
+      cutde_backend: cpp
+    method: std
+    extraction:
+      value_statistic: mean
+      error_statistic: std
+      coordinate_statistic: mean
+      projection_statistic: mean_normalized
+      trim_fraction: 0.1
+    guide_grid:
+      enabled: false
+      source: filtered_observation
+      component: auto
+      filter:
+        kind: gaussian
+        sigma: null
+        unit: km
+        radius_sigma: 3.0
+    report:
+      enabled: true
+      report_file: auto
+      quality: true
+    std_config:
+      startingsize: 15.0
+      minimumsize: 0.25
+      min_valid_fraction: 0.1
+      split_std_threshold: 0.02
+      split_metric_correction: median
+      split_metric_smoothing: null
+      use_variance: false
+      amplitude_stat: mean_abs
+      focus_region:
+        enabled: false
+        coord_type: lonlat
+        polygon: null
+        polygon_file: null
+        max_splits_outside: 5
+      high_value_refinement:
+        enabled: false
+        high_value_ratio: 0.25
+        min_splits: 1
+        reference_max_value: null
+      low_amplitude_cap:
+        enabled: false
+        amplitude_ratio: 0.05
+        max_splits: 3
+        reference_max_value: null
+        apply_inside_focus_region: false
+      plot: false
+      decimorig: 10
+      itmax: 100
+      verboseLevel: minimum
+    plot_decim:
+      style: cells
+      coordrange: null
+      figsize:
+      - 3.0
+      - 5.0
+      dpi: 300
+      factor4plot: null
+      vmin: null
+      vmax: null
+      symmetry: true
+      cmap: cmc.roma_r
+      edgewidth: 0.1
+      edgecolor: black
+      alpha: 1.0
+      markersize: 10
+      colorbar_orientation: vertical
+      colorbar_mode: auto
+      colorbar_loc: null
+      colorbar_size: null
+      colorbar_thickness: null
+      colorbar_pad: null
+      cb_label: null
+  fault_traces:
+  - enabled: false
+    id: example_trace
+    file: ../../../../Faults/example_rupture_trace.dat
+    stages:
+    - raw
+    - decim
+  fault_models:
+  - enabled: false
+    id: example_generated_triangular_fault
+    type: generated_from_trace
+    geometry: triangular
+    trace_file: ../../../../Faults/example_rupture_trace.dat
+    dip_angle: 86
+    dip_direction: 258
+    top_size: 5.0
+    bottom_size: 8.0
+    top_depth: 0.0
+    bottom_depth: 18.0
+    use_for: []
+    plot:
+      stages: []
+      mode: edges
+  - enabled: false
+    id: example_csi_gmt_fault
+    type: csi_gmt
+    geometry: triangular
+    file: fault_mesh.gmt
+    readpatchindex: true
+    donotreadslip: true
+    gmtslip: true
+    use_for: []
+    plot:
+      stages: []
+      mode: edges
+  input_adapter:
+    enabled: false
+  _config_dir: E:\geocodes\eqtools\example_tests\InSAR_Downsampling\GeoTiff\Wushi\insar\std_superapp
+  _workers: null
+  _runtime:
+    downsample_cutde_backend:
+      requested_backend: cpp
+      environment_backend: cpp
+      active_backend: null

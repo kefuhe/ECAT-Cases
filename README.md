@@ -3,13 +3,24 @@
 
 # ECAT Cases
 
-This repository contains research cases and advanced examples for the ECAT (Earthquake Cycle Analysis Toolkit).
+This repository contains research cases, data-preparation workflows, and advanced examples for the ECAT (Earthquake Cycle Analysis Toolkit).
 
-> ### Method & Example Modules
+> ### Data Preparation & Downsampling Examples
+>
+> | Topic | Example | Data / Reader | What to Learn | Local Directory |
+> |-------|---------|---------------|---------------|-----------------|
+> | InSAR / offset downsampling overview | InSAR Downsampling | GAMMA, GeoTIFF, GMTSAR direct-projection, adapter | Convert dense SAR/offset rasters to CSI-style `.txt/.rsp/.cov` inputs | [Details](./InSAR_Downsampling/) |
+> | GAMMA binary products | 2022 Menyuan | `reader: gamma`; `unwrapped_phase`, `range_offset`, `azimuth_offset` | GAMMA `.phs/.azi/.inc/.rsc`, old Step1/Step2 scripts, and the newer `ecat-downsample` workflow | [Details](./InSAR_Downsampling/GAMMA/2022_Menyuan/) |
+> | GeoTIFF products | Wushi / Chile | `reader: gamma_tiff` or custom input when needed | GeoTIFF value rasters with azimuth/incidence geometry, unit scaling, and standard downsampling outputs | [Details](./InSAR_Downsampling/GeoTiff/) |
+> | GMTSAR direct-projection products | Myanmar 2025 | `reader: gmtsar`; `los_displacement`, `range_offset`, `azimuth_offset` | GRD/NetCDF value grids plus ENU projection grids for LOS and pixel-offset tracking products | [Details](./InSAR_Downsampling/GMTSAR/Myanmar/) |
+> | Adapter and time-series reuse | Menyuan T128A adapter workflow | `input_adapter.enabled: true` | Replace only the data-loading layer while reusing ECAT covariance, quadtree, reporting, and optional reference-grid logic | [Details](./InSAR_Downsampling/GAMMA/2022_Menyuan/T128A/std_adapter_downsampling_workflow/) |
+>
+> For the maintained user guide, see the ECAT documentation pages for [InSAR downsampling](https://github.com/kefuhe/ECAT/blob/main/docs/workflows/02_insar_downsampling.md), [adapter downsampling](https://github.com/kefuhe/ECAT/blob/main/docs/workflows/02b_adapter_downsampling.md), and [SAR readers](https://github.com/kefuhe/ECAT/blob/main/docs/reference/sar_reader.md).
+
+> ### Method & Inversion Examples
 >
 > | 🏷️ Category         | ⚡ Earthquake Example         | 📝 Description (Date, Magnitude, Type)           | 📁 Local Directory                                   |
 > |---------------------|------------------------------|--------------------------------------------------|-----------------------------------------------------|
-> | Downsampling        | InSAR Downsampling           | Example code for InSAR downsampling              | [Details](./Cases/InSAR_Downsampling/)              |
 > | Nonlinear Inversion (Single-seg) | [Hotan Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000abmk/executive)           | 2020-06-25, Mw6.3, Normal                         | [Details](./Cases/Hotan_20200625M6_3/)              |
 > |                     | [Iran Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us10008ei0/executive)            | 2017-04-05, Mw6.1, Reverse                        | [Details](./Cases/Iran_20170405M6_1/)               |
 > |                     | [Taiwan Earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000m9g4/executive)          | 2024-04-05, Mw7.4, Reverse                        | [Details](./Cases/Taiwan_20240405Mw7_4/)            |

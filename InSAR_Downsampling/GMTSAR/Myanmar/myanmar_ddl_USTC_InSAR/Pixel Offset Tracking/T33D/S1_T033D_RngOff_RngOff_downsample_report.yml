@@ -1,0 +1,80 @@
+out_name: S1_T033D_RngOff_RngOff
+data_type: sar
+method: std
+input:
+  processing_points: 1741232
+  processing_region:
+    enabled: true
+    input_count: 4023087
+    final_count: 1741232
+    removed_count: 2281855
+    coord_type: lonlat
+    geometry: box
+    details:
+      coord_type: lonlat
+      geometry: box
+      box:
+      - 95.0
+      - 97.5
+      - 17.0
+      - 22.0
+      polygon: null
+      polygon_file: null
+    report_file: S1_T033D_RngOff_RngOff_processing_region_report.yml
+grid:
+  output_cells: 683
+  min_cell_pixels: 7
+  median_cell_pixels: 516.0
+  max_cell_pixels: 8734
+  reduction_ratio: 2549.387994143485
+extraction:
+  value_statistic: mean
+  error_statistic: std
+  coordinate_statistic: mean
+  projection_statistic: mean_normalized
+  trim_fraction: 0.1
+guide_grid:
+  enabled: true
+  source: filtered_observation
+  component: auto
+  filter:
+    kind: gaussian
+    sigma: 1.5
+    unit: km
+    radius_sigma: 3.0
+  backend: regular_grid
+  components:
+    observation:
+      backend: regular_grid
+      grid_shape:
+      - 2500
+      - 949
+      x_spacing: 0.21044261931367003
+      y_spacing: 0.2214693890677999
+      sigma_pixels_x: 7.12783372917542
+      sigma_pixels_y: 6.772945039103328
+observation:
+  vel:
+    finite_count: 1741232
+    total_count: 1741232
+    nanmean: 0.00846936113259623
+    nanmedian: 0.005302682518959045
+    nanstd: 0.12472216338068984
+    robust_99:
+    - -0.4009451361000538
+    - 0.392370919138193
+    full_range:
+    - -1.5736823081970215
+    - 4.975895881652832
+std_config:
+  startingsize: 20.0
+  minimumsize: 0.75
+  min_valid_fraction: 0.1
+  split_std_threshold: 0.1
+  split_metric_correction: median
+  split_metric_smoothing: null
+  use_variance: false
+  amplitude_stat: mean_abs
+quality:
+  reconstruction_rms: 0.09555905550330906
+  reconstruction_points: 1740703

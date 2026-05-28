@@ -27,8 +27,10 @@ if __name__ == '__main__':
     outName = 'S1_T033D'
     prefix = r'geo_20211229_20220110'
     mysar = GammasarReader(name='Menyuan', lon0=lon0, lat0=lat0, directory_name='..')
+    mysar.apply_preset(preset='gamma_unwrapped_phase')
     mysar.extract_raw_grd(prefix=prefix)
-    mysar.read_from_gamma(downsample=1, apply_wavelength_conversion=True, zero2nan=True)
+    mysar.read_observation(downsample=1, zero2nan=True)
+    mysar.print_input_summary()
 
     # Remove Zero and NaN values and value where LOS equals 1
     mysar.checkZeros()

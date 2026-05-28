@@ -1,0 +1,51 @@
+out_name: S1_T033D
+data_type: sar
+method: std
+input:
+  processing_points: 7466962
+  processing_region:
+    enabled: false
+    input_count: 7466962
+    final_count: 7466962
+    removed_count: 0
+    coord_type: lonlat
+    geometry: box
+grid:
+  output_cells: 2138
+  min_cell_pixels: 1
+  median_cell_pixels: 159.0
+  max_cell_pixels: 42541
+  reduction_ratio: 3492.4985968194574
+extraction:
+  value_statistic: mean
+  error_statistic: std
+  coordinate_statistic: mean
+  projection_statistic: mean_normalized
+  trim_fraction: 0.1
+guide_grid:
+  enabled: false
+observation:
+  vel:
+    finite_count: 7466962
+    total_count: 7466962
+    nanmean: 0.003513939189649506
+    nanmedian: -0.0047087534330785275
+    nanstd: 0.04529827640406798
+    robust_99:
+    - -0.1111715131625533
+    - 0.25950233727693606
+    full_range:
+    - -0.19937528669834137
+    - 0.41106948256492615
+std_config:
+  startingsize: 20.0
+  minimumsize: 0.25
+  min_valid_fraction: 0.1
+  split_std_threshold: 0.015
+  split_metric_correction: median
+  split_metric_smoothing: null
+  use_variance: false
+  amplitude_stat: mean_abs
+quality:
+  reconstruction_rms: 0.007424512253576066
+  reconstruction_points: 7437267

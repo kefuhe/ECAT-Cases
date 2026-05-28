@@ -1,0 +1,51 @@
+out_name: S1_T128A
+data_type: sar
+method: std
+input:
+  processing_points: 4271182
+  processing_region:
+    enabled: false
+    input_count: 4271182
+    final_count: 4271182
+    removed_count: 0
+    coord_type: lonlat
+    geometry: box
+grid:
+  output_cells: 1393
+  min_cell_pixels: 1
+  median_cell_pixels: 56.0
+  max_cell_pixels: 14942
+  reduction_ratio: 3066.175161521895
+extraction:
+  value_statistic: mean
+  error_statistic: std
+  coordinate_statistic: mean
+  projection_statistic: mean_normalized
+  trim_fraction: 0.1
+guide_grid:
+  enabled: false
+observation:
+  vel:
+    finite_count: 4271182
+    total_count: 4271182
+    nanmean: 0.011097809074843094
+    nanmedian: 0.01053541200235486
+    nanstd: 0.0307213489270687
+    robust_99:
+    - -0.14342898473143578
+    - 0.13728357374668065
+    full_range:
+    - -0.5580404996871948
+    - 0.40662020444869995
+std_config:
+  startingsize: 10.0
+  minimumsize: 0.25
+  min_valid_fraction: 0.1
+  split_std_threshold: 0.015
+  split_metric_correction: median
+  split_metric_smoothing: null
+  use_variance: false
+  amplitude_stat: mean_abs
+quality:
+  reconstruction_rms: 0.0032468334455231698
+  reconstruction_points: 4261619

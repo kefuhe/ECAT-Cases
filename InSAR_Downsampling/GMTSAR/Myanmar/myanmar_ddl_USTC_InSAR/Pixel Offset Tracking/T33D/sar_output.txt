@@ -1,0 +1,10 @@
+# mode: azimuth_offset
+# reader: gmtsar
+# plot_value_space: observation
+# plot_factor: 100.0
+# plot_finite: 4096677/8028020
+# plot_full_range: [-658.674, 641.544]
+# plot_robust_99_range: [-145.517, 123.046]
+# plot_vmin: -300
+# plot_vmax: 300
+# plot_clipped: below=261/4096677 (0.00637%), above=70/4096677 (0.00171%)

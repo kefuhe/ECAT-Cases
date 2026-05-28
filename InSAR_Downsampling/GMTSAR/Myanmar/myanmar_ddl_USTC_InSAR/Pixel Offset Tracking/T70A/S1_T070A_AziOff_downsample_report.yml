@@ -1,0 +1,80 @@
+out_name: S1_T070A_AziOff
+data_type: sar
+method: std
+input:
+  processing_points: 1291123
+  processing_region:
+    enabled: true
+    input_count: 4622865
+    final_count: 1291123
+    removed_count: 3331742
+    coord_type: lonlat
+    geometry: box
+    details:
+      coord_type: lonlat
+      geometry: box
+      box:
+      - 95.0
+      - 97.0
+      - 18.0
+      - 23.0
+      polygon: null
+      polygon_file: null
+    report_file: S1_T070A_AziOff_processing_region_report.yml
+grid:
+  output_cells: 1925
+  min_cell_pixels: 10
+  median_cell_pixels: 36.0
+  max_cell_pixels: 8802
+  reduction_ratio: 670.7132467532467
+extraction:
+  value_statistic: mean
+  error_statistic: std
+  coordinate_statistic: mean
+  projection_statistic: mean_normalized
+  trim_fraction: 0.1
+guide_grid:
+  enabled: true
+  source: filtered_observation
+  component: auto
+  filter:
+    kind: gaussian
+    sigma: 2.0
+    unit: km
+    radius_sigma: 3.0
+  backend: regular_grid
+  components:
+    observation:
+      backend: regular_grid
+      grid_shape:
+      - 2500
+      - 780
+      x_spacing: 0.20787191470694089
+      y_spacing: 0.2215161857819604
+      sigma_pixels_x: 9.621309366489516
+      sigma_pixels_y: 9.02868561473251
+observation:
+  vel:
+    finite_count: 1291123
+    total_count: 1291123
+    nanmean: -0.06941210716745343
+    nanmedian: -0.05609583854675293
+    nanstd: 0.6478887758890642
+    robust_99:
+    - -2.2987335896492005
+    - 2.0503093671798704
+    full_range:
+    - -4.810094833374023
+    - 3.903107166290283
+std_config:
+  startingsize: 20.0
+  minimumsize: 1.25
+  min_valid_fraction: 0.1
+  split_std_threshold: 0.2
+  split_metric_correction: median
+  split_metric_smoothing: null
+  use_variance: false
+  amplitude_stat: mean_abs
+quality:
+  reconstruction_rms: 0.25564064873847414
+  reconstruction_points: 1289297

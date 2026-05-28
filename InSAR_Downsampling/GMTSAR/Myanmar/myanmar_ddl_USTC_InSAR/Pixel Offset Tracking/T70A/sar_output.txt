@@ -1,0 +1,10 @@
+# mode: range_offset
+# reader: gmtsar
+# plot_value_space: observation
+# plot_factor: 100.0
+# plot_finite: 4649690/8118420
+# plot_full_range: [-547.499, 890.699]
+# plot_robust_99_range: [-32.1554, 32.1494]
+# plot_vmin: -30
+# plot_vmax: 30
+# plot_clipped: below=32986/4649690 (0.709%), above=30914/4649690 (0.665%)

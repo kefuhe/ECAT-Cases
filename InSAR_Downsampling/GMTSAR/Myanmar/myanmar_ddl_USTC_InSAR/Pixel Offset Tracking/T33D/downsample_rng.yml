@@ -1,0 +1,220 @@
+data_type: sar
+
+
+general:
+  origin: auto             # auto = use input data center; manual = use lon0/lat0 below
+  lon0:                    # required only when origin: manual
+  lat0:                    # required only when origin: manual
+
+
+sar_config:
+  outName: S1_T033D_RngOff
+  reader: gmtsar         # gamma | gamma_tiff | gmtsar | hyp3
+  mode: range_offset             # unwrapped_phase/phase_los | los_displacement | range_offset | azimuth_offset
+  directory: .
+  output_check: true
+  output_suffix: auto          # auto appends _RngOff/_AziOff for range/azimuth offsets
+
+  files:
+    prefix:
+    value: azimuth_range/T33D_range.grd
+    metadata:
+    geometry:
+      azimuth:
+      incidence:
+    projection:
+      east: enu_range/e_sample.grd
+      north: enu_range/n_sample.grd
+      up: enu_range/u_sample.grd
+
+  read:
+    downsample: 1              # used for quick-look and downsample runs
+    downsample_for_covar: 1    # used only when estimating covariance
+    zero2nan: true
+    wavelength:                # phase_los uses reader metadata or this value
+    factor_to_m: 1.0 # direct displacement unit scale; keep 1.0 for phase radians
+  grid:
+    engine:                    # null = xarray auto/fallback; set netcdf4/scipy/h5netcdf when needed
+    value_variable:            # GMTSAR/direct-projection grids default to variable "z"
+    projection_variable:       # null = same default as value_variable
+    east_variable:             # optional override when east/north/up grids use different variable names
+    north_variable:
+    up_variable:
+    lon_name:                  # direct-projection grids accept lon/lat or checked x/y coordinate names
+    lat_name:
+    coord_is_lonlat:           # null = check x/y values; true = user confirms geographic lon/lat
+
+  data_filters:
+    enabled: false
+    report: true
+    report_file: auto
+    rules:
+      - name: valid_observation_range
+        enabled: false
+        kind: value_range
+        value_space: observation
+        min:
+        max:
+  qc:
+    summary_percentile: 99.0
+    plot:
+      save_fig: true
+      file_path: sar_values.png
+      show: true
+      rawdownsample4plot: 1
+      coordrange:                 # display extent only; does not crop data
+      value_space: observation    # observation = value in mode target direction; raw = product value
+      factor4plot: 100.0          # meter to centimeter for display
+      vmin: -100
+      vmax: 100
+      symmetry: true
+      cmap: cmc.roma_r
+      colorbar_orientation: vertical
+      colorbar_mode: auto
+      colorbar_loc:
+      colorbar_size:
+      colorbar_thickness:
+      colorbar_pad:
+      cb_label:
+
+
+processing_region:
+  enabled: true
+  report: true
+  report_file: auto
+  coord_type: lonlat       # lonlat | xy
+  geometry: box            # box | polygon | polygon_file
+  box: [95.0, 97.5, 17.0, 22.0]                    # [minlon, maxlon, minlat, maxlat]; keeps only this region when enabled
+  polygon:                 # inline [[lon, lat], ...] or [[x, y], ...]
+  polygon_file:            # text file with two columns, relative to the config file
+
+
+covar:
+  do_covar: false          # can also be enabled with ecat-downsample -c
+  mask_out: [96, 97, 16, 20.5]    # required for covariance estimation; mask deformation source area
+  missing_policy: existing_or_identity   # when downsampling without covariance: existing_or_identity | identity | error
+  function: exp            # exp | gauss covariance model
+  frac: 0.002              # fraction of pixels sampled for empirical covariance
+  every: 2.0               # distance-bin spacing for empirical covariance
+  distmax: 100.0           # maximum distance used for covariance fitting
+  rampEst: true            # estimate/remove a planar ramp before covariance
+
+downsample:
+  enabled: false           # can also be enabled with ecat-downsample -d
+  compute:
+    cutde_backend: cpp     # cpp | cuda | opencl | auto; mainly affects trirb/cutde GF calls
+  method: std            # std is fault-free and easiest for first tests; trirb needs fault geometry
+  extraction:
+    value_statistic: mean         # mean | median | center_nearest | trimmed_mean
+    error_statistic: std          # std | mad | sem | none
+    coordinate_statistic: mean    # mean | block_center | center_nearest
+    projection_statistic: mean_normalized   # mean_normalized | center_nearest
+    trim_fraction: 0.1            # used only by value_statistic: trimmed_mean
+
+  guide_grid:
+    enabled: true                # true enables Guided Quadtree Downsampling for std/data
+    source: filtered_observation   # currently filtered_observation
+    component: auto               # SAR: observation; optical: magnitude | east | north | both
+    filter:
+      kind: gaussian              # currently gaussian
+      sigma: 1.5                     # required when enabled; in km by default
+      unit: km                    # km | pixel
+      radius_sigma: 3.0           # smoothing search radius = radius_sigma * sigma
+
+  report:
+    enabled: true                 # write <outName>_downsample_report.yml for tuning diagnostics
+    report_file: auto             # auto | path | null/false
+    quality: true                 # include reconstruction residual diagnostics when available
+
+  # Used only when method: std.
+  std_config:
+    startingsize: 20.0       # initial square block size in CSI projected units, usually km
+    minimumsize: 0.75       # smallest allowed block size
+    min_valid_fraction: 0.1 # minimum valid-pixel fraction to keep a block
+    split_std_threshold: 0.1 # split blocks until within-block std is below this value
+    split_metric_correction: median   # std keeps CSI compatibility; try median for new tuning
+    split_metric_smoothing:      # optional smoothing length for split metric; null disables it
+    use_variance: false     # false = compare std; true = compare variance with split_std_threshold
+    amplitude_stat: mean_abs   # mean_abs | abs_mean | median_abs; used by high/low amplitude controls
+    focus_region:
+      enabled: false        # true limits refinement outside the polygon below
+      coord_type: lonlat    # lonlat | xy; polygon is converted to CSI xy when lonlat
+      polygon:              # inline [[lon, lat], ...]; use this or polygon_file, not both
+      polygon_file:         # text file with two columns: lon lat or x y; relative to config file
+      max_splits_outside: 5 # maximum std split level outside focus polygon
+    high_value_refinement:
+      enabled: false        # true forces extra splits where block amplitude is large
+      high_value_ratio: 0.25 # amplitude threshold as fraction of reference max value
+      min_splits: 1         # minimum split level for high-value blocks
+      reference_max_value:      # null = use max(abs(input value))
+    low_amplitude_cap:
+      enabled: false        # true caps splitting in low-amplitude, likely noisy areas
+      amplitude_ratio: 0.05 # low amplitude threshold as fraction of reference max value
+      max_splits: 3         # maximum split level for low-amplitude blocks
+      reference_max_value:      # null = share CSI reference max value
+      apply_inside_focus_region: false # false keeps focus polygon free to refine
+    plot: false             # pass plotting flag to CSI during downsampling iterations
+    decimorig: 10           # plot decimation used only when plot: true
+    itmax: 100              # maximum std-based splitting iterations
+    verboseLevel: minimum
+
+
+
+
+  plot_decim:
+    style: cells           # cells = draw CSI output cells; points = draw sample centers
+    coordrange:            # [minlon, maxlon, minlat, maxlat]; null = all decimated data
+    figsize: [3.0, 5.0]   # final decimated-data check figure size
+    dpi: 300
+    factor4plot:           # null = inherit raw quick-look display scale
+    vmin:                  # null = auto; CLI --vmin/--vmax override decim plots
+    vmax:
+    symmetry: true
+    cmap: cmc.roma_r
+    edgewidth: 0.1
+    edgecolor: black
+    alpha: 1.0
+    markersize: 10         # used only when style: points
+    colorbar_orientation: vertical
+    colorbar_mode: auto
+    colorbar_loc:
+    colorbar_size:
+    colorbar_thickness:
+    colorbar_pad:
+    cb_label:
+
+fault_traces:
+  - enabled: false
+    id: example_trace
+    file: ../../../../Faults/example_rupture_trace.dat
+    stages: [raw, decim]       # raw | decim | all; display only
+
+fault_models:
+  - enabled: false
+    id: example_generated_triangular_fault
+    type: generated_from_trace     # generated_from_trace | csi_gmt
+    geometry: triangular           # triangular | rectangular; trirb requires triangular
+    trace_file: ../../../../Faults/example_rupture_trace.dat
+    dip_angle: 86                  # degrees from horizontal
+    dip_direction: 258             # degrees clockwise from north
+    top_size: 5.0                  # top mesh target size, usually km
+    bottom_size: 8.0               # bottom mesh target size, usually km
+    top_depth: 0.0                 # km
+    bottom_depth: 18.0             # km
+    use_for: []                    # set to ["trirb"] for resolution-based downsampling
+    plot:
+      stages: []                   # e.g. ["decim"] to draw patch edges
+      mode: edges                  # edges | outline | both
+
+  - enabled: false
+    id: example_csi_gmt_fault
+    type: csi_gmt
+    geometry: triangular
+    file: fault_mesh.gmt
+    readpatchindex: true
+    donotreadslip: true
+    gmtslip: true
+    use_for: []                    # triangular GMT can use ["trirb"]
+    plot:
+      stages: []
+      mode: edges

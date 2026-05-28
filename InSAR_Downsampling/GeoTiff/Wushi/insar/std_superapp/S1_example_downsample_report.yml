@@ -1,0 +1,62 @@
+out_name: S1_example
+data_type: sar
+method: std
+input:
+  processing_points: 3594971
+  processing_region:
+    enabled: true
+    input_count: 7897996
+    final_count: 3594971
+    removed_count: 4303025
+    coord_type: lonlat
+    geometry: box
+    details:
+      coord_type: lonlat
+      geometry: box
+      box:
+      - 77.5
+      - 79.5
+      - 40.5
+      - 41.75
+      polygon: null
+      polygon_file: null
+    report_file: S1_example_processing_region_report.yml
+grid:
+  output_cells: 1580
+  min_cell_pixels: 2
+  median_cell_pixels: 130.0
+  max_cell_pixels: 34999
+  reduction_ratio: 2275.298101265823
+extraction:
+  value_statistic: mean
+  error_statistic: std
+  coordinate_statistic: mean
+  projection_statistic: mean_normalized
+  trim_fraction: 0.1
+guide_grid:
+  enabled: false
+observation:
+  vel:
+    finite_count: 3594971
+    total_count: 3594971
+    nanmean: 0.03345924559091341
+    nanmedian: 0.01738318087263064
+    nanstd: 0.08038286063396063
+    robust_99:
+    - -0.0566351297102816
+    - 0.5914143768884066
+    full_range:
+    - -0.10127857661085243
+    - 0.7725970508608597
+std_config:
+  startingsize: 15.0
+  minimumsize: 0.25
+  min_valid_fraction: 0.1
+  split_std_threshold: 0.02
+  split_metric_correction: median
+  split_metric_smoothing: null
+  use_variance: false
+  amplitude_stat: mean_abs
+quality:
+  reconstruction_rms: 0.007198653653420433
+  reconstruction_points: 3594962

@@ -1,0 +1,7 @@
+# mode: los_displacement
+# reader: gmtsar
+# plot_value_space: observation
+# plot_min: -19.9375
+# plot_max: 41.1069
+# plot_vmin: -30
+# plot_vmax: 30

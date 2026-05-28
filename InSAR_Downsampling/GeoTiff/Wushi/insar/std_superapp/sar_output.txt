@@ -1,0 +1,10 @@
+# mode: unwrapped_phase
+# reader: gamma_tiff
+# plot_value_space: observation
+# plot_factor: 100.0
+# plot_finite: 7897996/11362680
+# plot_full_range: [-10.1279, 77.2597]
+# plot_robust_99_range: [-4.04128, 46.437]
+# plot_vmin: -30
+# plot_vmax: 30
+# plot_clipped: below=0/7897996 (0%), above=83713/7897996 (1.06%)

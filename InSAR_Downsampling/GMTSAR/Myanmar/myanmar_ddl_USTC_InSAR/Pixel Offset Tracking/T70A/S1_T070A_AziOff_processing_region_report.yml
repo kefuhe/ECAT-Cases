@@ -1,0 +1,16 @@
+enabled: true
+input_count: 4622865
+final_count: 1291123
+removed_count: 3331742
+coord_type: lonlat
+geometry: box
+details:
+  coord_type: lonlat
+  geometry: box
+  box:
+  - 95.0
+  - 97.0
+  - 18.0
+  - 23.0
+  polygon: null
+  polygon_file: null

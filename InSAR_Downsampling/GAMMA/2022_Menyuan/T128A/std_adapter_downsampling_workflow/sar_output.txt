@@ -1,0 +1,17 @@
+# mode: unwrapped_phase
+# reader: gamma
+# plot_value_space: observation
+# plot_factor: 100.0
+# plot_finite: 4271182/6672300
+# plot_full_range: [-55.8041, 40.662]
+# plot_robust_99_range: [-14.3429, 13.7284]
+# plot_vmin: -40
+# plot_vmax: 40
+# plot_clipped: below=3332/4271182 (0.078%), above=13/4271182 (0.000304%)
+# Corner Coordinates:
+# Top-left, Top-right, Bottom-right, Bottom-left
+  100.170, 38.443
+  102.190, 38.729
+  102.542, 37.110
+  100.567, 36.823
+# Flight Direction: 103.77 degree (reference=east, direction=counterclockwise)
