@@ -13,7 +13,7 @@ sar_config:
   mode: unwrapped_phase             # unwrapped_phase/phase_los | los_displacement | range_offset | azimuth_offset
   directory: ..
   output_check: true
-  output_suffix: auto          # auto appends _RngOff/_AziOff for range/azimuth offsets
+  output_suffix: auto          # auto appends _RngOff/_AziOff for range/azimuth offsets if not already present
 
   files:
     prefix: geo_20220105_20220117

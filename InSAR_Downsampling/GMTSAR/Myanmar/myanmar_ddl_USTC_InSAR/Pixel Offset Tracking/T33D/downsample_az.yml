@@ -8,12 +8,12 @@ general:
 
 
 sar_config:
-  outName: S1_T033D_AziOff
+  outName: S1_T033D
   reader: gmtsar         # gamma | gamma_tiff | gmtsar | hyp3
   mode: azimuth_offset             # unwrapped_phase/phase_los | los_displacement | range_offset | azimuth_offset
   directory: .
   output_check: true
-  output_suffix: auto          # auto appends _RngOff/_AziOff for range/azimuth offsets
+  output_suffix: auto          # auto appends _RngOff/_AziOff for range/azimuth offsets if not already present
 
   files:
     prefix:
