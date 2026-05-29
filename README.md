@@ -9,13 +9,15 @@ This repository contains research cases, data-preparation workflows, and advance
 >
 > | Topic | Example | Data / Reader | What to Learn | Local Directory |
 > |-------|---------|---------------|---------------|-----------------|
-> | InSAR / offset downsampling overview | InSAR Downsampling | GAMMA, GeoTIFF, GMTSAR direct-projection, adapter | Convert dense SAR/offset rasters to CSI-style `.txt/.rsp/.cov` inputs | [Details](./InSAR_Downsampling/) |
+> | InSAR / offset downsampling overview | InSAR Downsampling | GAMMA, GeoTIFF, GMTSAR direct-projection, adapter | Choose the right reader/mode and convert dense SAR/offset rasters to CSI-style `.txt/.rsp/.cov` inputs | [Details](./InSAR_Downsampling/) |
 > | GAMMA binary products | 2022 Menyuan | `reader: gamma`; `unwrapped_phase`, `range_offset`, `azimuth_offset` | GAMMA `.phs/.azi/.inc/.rsc`, old Step1/Step2 scripts, and the newer `ecat-downsample` workflow | [Details](./InSAR_Downsampling/GAMMA/2022_Menyuan/) |
 > | GeoTIFF products | Wushi / Chile | `reader: gamma_tiff` or custom input when needed | GeoTIFF value rasters with azimuth/incidence geometry, unit scaling, and standard downsampling outputs | [Details](./InSAR_Downsampling/GeoTiff/) |
 > | GMTSAR direct-projection products | Myanmar 2025 / California | `reader: gmtsar`; `los_displacement`, `range_offset`, `azimuth_offset` | GRD/NetCDF value grids plus ENU projection grids for LOS and pixel-offset tracking products | [Details](./InSAR_Downsampling/GMTSAR/) |
 > | Adapter and time-series reuse | Menyuan T128A adapter workflow | `input_adapter.enabled: true` | Replace only the data-loading layer while reusing ECAT covariance, quadtree, reporting, and optional reference-grid logic | [Details](./InSAR_Downsampling/GAMMA/2022_Menyuan/T128A/std_adapter_downsampling_workflow/) |
 >
 > For range/azimuth offset YAMLs, prefer a base `outName` such as `S1_T033D`; `output_suffix: auto` adds `_RngOff` or `_AziOff` and current ECAT avoids duplicating an existing suffix.
+>
+> Current rectangular ECAT outputs write 18-column full-corner `.rsp` files. Legacy 10-column rectangle `.rsp` files and 8-column triangle `.rsp` files remain readable through `method: from_rsp`.
 >
 > For the maintained user guide, see the ECAT documentation pages for [InSAR downsampling](https://github.com/kefuhe/ECAT/blob/main/docs/workflows/02_insar_downsampling.md), [adapter downsampling](https://github.com/kefuhe/ECAT/blob/main/docs/workflows/02b_adapter_downsampling.md), and [SAR readers](https://github.com/kefuhe/ECAT/blob/main/docs/reference/sar_reader.md).
 
